@@ -6,8 +6,14 @@ import { BILLOMAT_RESOURCE_NAMES } from './get-billomat-api-client';
 export namespace Billomat {
     export type ResourceName = typeof BILLOMAT_RESOURCE_NAMES[number];
 
+    export interface RateLimitState {
+        numberOfRemainingRequests: number;
+        resetDate: Date;
+    }
+
     export interface Resource {
         id?: string;
+        rateLimitState?: RateLimitState;
     }
 
     export interface Article extends Resource {
